@@ -1,16 +1,7 @@
 const applicationLogic = {
     data() {
         return {
-            todoListElements: [
-                {
-                    name: 'toto',
-                    isDone: false,
-                },
-                {
-                    name: 'tata',
-                    isDone: true,
-                }
-            ],
+            todoListElements: [],
             newTodoListElement: {
                 isDone: false,
             },
