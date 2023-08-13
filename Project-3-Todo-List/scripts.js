@@ -1,20 +1,20 @@
 const applicationLogic = {
     data() {
         return {
-            todoListElements: [],
-            newTodoListElement: {
+            todoList: [],
+            newTodo: {
                 isDone: false,
             },
         };
     },
     methods: {
         addTodoList: function() {
-            if (this.newTodoListElement.name) {
-                this.todoListElements.push(this.newTodoListElement);
+            if (this.newTodo.name) {
+                this.todoList.push(this.newTodo);
 
-                this.newTodoListElement = {isDone: false,};
+                this.newTodo = {isDone: false};
             } else {
-                alert('Name field is mandatory.');
+                alert('Name field is required.');
             }
         },
     },

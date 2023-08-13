@@ -12,29 +12,27 @@
         <main id="app">
             <section class="todo-list">
                 <h3>To-do List</h3>
-                <template v-if="todoListElements.length > 0">
+                <div class="all-todos">
                     <div
-                        class="all-todos"
-                        v-for="todoListElement in todoListElements"
+                        v-for="todo in todoList"
+                        class="single-todo"
+                        :class="{done: todo.isDone}"
                     >
-                        <div
-                            class="single-todo"
-                            :class="{done: todoListElement.isDone}"
-                        >
-                            <p @click="todoListElement.isDone = !todoListElement.isDone">{{ todoListElement.name }}</p>
-                        </div>
+                        <p @click="todo.isDone = !todo.isDone">{{ todo.name }}</p>
                     </div>
-                </template>
+                </div>
                 <button
                     class="clear"
-                    @click="todoListElements = []"
+                    @click="todoList = []"
+                    v-if="todoList.length"
                 >
                     Clear All
                 </button>
                 <input
                     type="text"
                     placeholder="Add new to-do"
-                    v-model="newTodoListElement.name"
+                    v-model="newTodo.name"
+                    @keyup.enter="addTodoList()"
                 >
                 <button
                     class="add"
