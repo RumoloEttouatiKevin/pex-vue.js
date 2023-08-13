@@ -17,13 +17,14 @@
                         v-for="todo in todoList"
                         class="single-todo"
                         :class="{done: todo.isDone}"
+                        @click="todo.isDone = !todo.isDone; storeTodoList()"
                     >
-                        <p @click="todo.isDone = !todo.isDone">{{ todo.name }}</p>
+                        <p>{{ todo.name }}</p>
                     </div>
                 </div>
                 <button
                     class="clear"
-                    @click="todoList = []"
+                    @click="todoList = []; storeTodoList()"
                     v-if="todoList.length"
                 >
                     Clear All
@@ -32,11 +33,11 @@
                     type="text"
                     placeholder="Add new to-do"
                     v-model="newTodo.name"
-                    @keyup.enter="addTodoList()"
+                    @keyup.enter="addTodo(); storeTodoList()"
                 >
                 <button
                     class="add"
-                    @click="addTodoList()"
+                    @click="addTodo(); storeTodoList()"
                 >
                     Add
                 </button>
